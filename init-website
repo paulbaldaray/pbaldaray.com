@@ -2,8 +2,8 @@
 function PANIC { echo "$@"; exit 1; }
 
 [ $EUID -ne 0 ] && PANIC "Error: must be run as root"
-hash docker && PANIC "Error: docker must be installed"
-hash docker-compose && PANIC "Error: docker compose must be installed"
+hash docker || PANIC "Error: docker must be installed"
+hash docker-compose || PANIC "Error: docker compose must be installed"
 
 rm -r live
 
@@ -11,4 +11,4 @@ rm -r live
 ./scripts/setup-real-certificates
 ./scripts/update-pages
 
-docker-compose up nginx
+docker-compose up -d nginx
