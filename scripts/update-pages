@@ -1,12 +1,12 @@
 #!/bin/bash
 read -p 'Login? (y/n) ' credentials
-read -p 'Username: ' username
-read -p 'Password: ' password
-login="$username:$password@"
 if [ "$credentials" = y ]; then
-	location="https://$login""github.com/$username"
+	read -p 'Username: ' username
+	read -p 'Password: ' password
+	login="$username:$password@"
+	location="https://$login""github.com/paulbaldaray"
 else
-	location="https://github.com/$username"
+	location="https://github.com/paulbaldaray"
 fi
 function update() {
 	[ "$#" -ne 1 ] && echo 'update: invalid args' && exit 1
