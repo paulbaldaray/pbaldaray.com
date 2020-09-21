@@ -5,8 +5,6 @@ function PANIC { echo "$@"; exit 1; }
 hash docker || PANIC "Error: docker must be installed"
 hash docker-compose || PANIC "Error: docker compose must be installed"
 
-rm -r live
-
 ./scripts/setup-placeholders
 read -p 'Setup up real certificates? (y/n) ' check
 [ "$check" = y ] && ./scripts/setup-real-certificates

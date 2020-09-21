@@ -2,7 +2,7 @@
 read -p 'Login? (y/n) ' credentials
 if [ "$credentials" = y ]; then
 	read -p 'Username: ' username
-	read -p 'Password: ' password
+	read -s -p 'Password: ' password
 	login="$username:$password@"
 	location="https://$login""github.com/paulbaldaray"
 else
@@ -10,12 +10,16 @@ else
 fi
 function update() {
 	[ "$#" -ne 1 ] && echo 'update: invalid args' && exit 1
-	if [ ! -e "site/$1" ]; then
-		git clone "$location/$1" ./site/$1
+	if [ ! -e "./site/$1" ]; then
+		git clone "$location/$1" "./site/$1"
 	else
-		git pull "$location/$1" ./site/$1
+		cd "./site/$1" && git pull origin master && cd -
 	fi
 }
+
 update type-type
 update chess-simulator
-[ "$credentials" = y ] && update resume
+
+if [ "$credentials" = y ]; then
+	update resume
+fi
