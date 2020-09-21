@@ -1,9 +1,13 @@
 #!/bin/bash
-echo -n 'Username: '
-read username
-echo -n 'Password: '
-read -s password
-location="https://$username:$password@github.com/$username"
+read -p 'Login? (y/n) ' credentials
+read -p 'Username: ' username
+read -p 'Password: ' password
+login="$username:$password@"
+if [ "$credentials" = y ]; then
+	location="https://$login""github.com/$username"
+else
+	location="https://github.com/$username"
+fi
 function update() {
 	[ "$#" -ne 1 ] && echo 'update: invalid args' && exit 1
 	if [ ! -e "site/$1" ]; then
@@ -14,4 +18,4 @@ function update() {
 }
 update type-type
 update chess-simulator
-update resume
+[ "$credentials" = y ] && update resume

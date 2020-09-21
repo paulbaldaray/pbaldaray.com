@@ -8,7 +8,9 @@ hash docker-compose || PANIC "Error: docker compose must be installed"
 rm -r live
 
 ./scripts/setup-placeholders
-./scripts/setup-real-certificates
-./scripts/update-pages
+read -p 'Setup up real certificates? (y/n) ' check
+[ "$check" = y ] && ./scripts/setup-real-certificates
+read -p 'Update website pages? (y/n) ' check
+[ "$check" = y ] && ./scripts/update-pages
 
 docker-compose up -d nginx
