@@ -13,4 +13,5 @@ read -p 'Setup up real certificates? (y/n) ' check
 read -p 'Update website pages? (y/n) ' check
 [ "$check" = y ] && ./scripts/update-pages
 
-docker-compose up -d nginx
+read -p 'Start nginx container? (y/n) ' check
+[ "$check" = y ] && docker-compose up -d nginx
