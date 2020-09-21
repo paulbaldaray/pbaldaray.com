@@ -1,0 +1,22 @@
+#!/bin/bash
+
+domain="pbaldaray.com"
+install_path="live"
+
+if [ -d "$install_path" ]; then
+	read -p "'$install_path' already exists. Delete? (y/n): " delete
+	[ "$delete" != y ] && exit
+	rm -r "$install_path"
+fi
+
+mkdir "$install_path"
+cp -r data/certbot "$install_path/conf"
+
+echo "Creating placeholder certificate for $domain ..."
+mkdir -p "$install_path/conf/live/$domain"
+docker-compose run --rm --entrypoint "\
+  openssl req -x509 -nodes -newkey rsa:1024 -days 1\
+    -keyout '/etc/letsencrypt/live/$domain/privkey.pem' \
+    -out '/etc/letsencrypt/live/$domain/fullchain.pem' \
+    -subj '/CN=localhost'" certbot
+echo

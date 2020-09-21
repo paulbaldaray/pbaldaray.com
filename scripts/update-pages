@@ -1,0 +1,17 @@
+#!/bin/bash
+echo -n 'Username: '
+read username
+echo -n 'Password: '
+read -s password
+location="https://$username:$password@github.com/$username"
+function update() {
+	[ "$#" -ne 1 ] && echo 'update: invalid args' && exit 1
+	if [ ! -e "site/$1" ]; then
+		git clone "$location/$1" ./site/$1
+	else
+		git pull "$location/$1" ./site/$1
+	fi
+}
+update type-type
+update chess-simulator
+update resume

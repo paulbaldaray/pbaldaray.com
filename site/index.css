@@ -1,0 +1,151 @@
+/* got these colors off a buzzfeed quiz lol */
+:root {
+--dark-blue: #303C6C;
+--light-black: #303030;
+--dark-green: #00746B;
+--light-gray: #DADADA;
+--gray: #AAA;
+--gold: #FFD700;
+}
+
+body {
+	margin: 0;
+	font-family: sans-serif;
+}
+
+section {
+	min-width: 500px;
+}
+
+#top {
+	display: block;
+	background-color: var(--dark-blue);
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 50px;
+	color: var(--light-gray);
+}
+
+#title-name {
+	margin: 0;
+	font-size: 40px;
+	padding-bottom: 10px;
+}
+
+#title-links {
+	margin: 0 auto;
+	display: inline-flex;
+}
+
+.title-link {
+	margin: 0 5px;
+	font-size: 20px;
+	color: var(--light-gray);
+}
+.title-link:hover {
+	color: var(--gold);
+}
+
+#middle {
+	background-color: var(--dark-blue);
+	color: var(--light-black);
+}
+
+.middle-content {
+	margin: 0 auto;
+	max-width: 1000px;
+	background-color: #E3E3E3;
+	display: flex;
+	flex-direction: column;
+	border: 25px solid var(--dark-blue);
+}
+
+.text-link {
+	color: black;
+}
+
+.text-link:hover {
+	color: #303C6C
+}
+
+.greeting {
+	font-size: 30px;
+	margin: 0;
+	padding: 0;
+}
+
+.text-image {
+	float: right;
+	height: 200px;
+	width: 200px;
+	padding-left: 10px;
+	border-radius: 100%;
+}
+
+.text-content {
+	padding: 40px 30px;
+	font-size: 20px;
+}
+
+.projects-area {
+	text-align: center;
+	background-color: var(--dark-green);
+	padding: 20px 0;
+}
+
+.projects {
+	display: inline-flex;
+  padding: 2px 16px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.project-title {
+	text-align: center;
+	color: white;
+	margin: 0 auto;
+	font-size: 40px;
+	padding-bottom: 30px;
+}
+
+.card {
+	background-color: var(--light-black);
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+	margin: 0 25px 40px 25px;
+	border-radius: 10px;
+	height: 550px;
+	width: 400px;
+	color: var(--light-gray);
+	transition: .3s;
+}
+
+.card:hover {
+	box-shadow: 0 12px 24px 0 rgba(0,0,0,0.5);
+	transform: translate(-5px, -5px);
+}
+
+.card-image {
+	border-radius: 10px 10px 0 0;
+	display: block;
+	width: 400px;
+	height: 400px;
+	margin: 0;
+}
+
+.card-title {
+	font-size: 20px;
+	background-color: #5555;
+	margin: 0;
+	padding: 0;
+}
+
+.card-text {
+	margin: 0;
+	padding: 20px;
+}
+
+#bottom {
+	height: 100px;
+	background-color: var(--light-black);
+}
