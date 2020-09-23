@@ -8,18 +8,21 @@ if [ "$credentials" = y ]; then
 else
 	location="https://github.com/paulbaldaray"
 fi
+dir="./live/repos"
+mkdir -p $dir
 function update() {
 	[ "$#" -ne 1 ] && echo 'update: invalid args' && exit 1
-	if [ ! -e "./site/$1" ]; then
-		git clone "$location/$1" "./site/$1"
+	if [ ! -e "$dir/$1/.git" ]; then
+		[ -e "$dir/$1" ] && rm -r "$dir/$1"
+		git clone "$location/$1" "$dir/$1"
 	else
-		cd "./site/$1" && git pull origin master && cd -
+		cd "$dir/$1" && git pull origin master && cd -
 	fi
 }
-
-update type-type
-update chess-simulator
 
 if [ "$credentials" = y ]; then
 	update resume
 fi
+
+update type-type
+update chess-simulator

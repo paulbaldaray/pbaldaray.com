@@ -6,8 +6,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./data/nginx.conf:/etc/nginx/nginx.conf
+      - ./data/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./site:/var/www/pbaldaray.com
+      - ./live/repos:/var/www/repos
       - ./live/conf:/etc/letsencrypt
       - ./live/www:/var/www/certbot
   certbot:
